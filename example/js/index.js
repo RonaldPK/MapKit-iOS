@@ -44,13 +44,13 @@ var app = {
 	showMap : function() {
 		var pins = []; // array of pin objects
 		pins.push({
-				  lat: 52.37282884466203, lon: 4.893712154769901, title: 'monument', subTitle:'subTitle here', pinColor: 'red', index: 1, selected: false
+				  lat: 52.37282884466203, lon: 4.893712154769901, title: 'monument', subTitle:'subtitle here', pinColor: 'red', index: 1, selected: false, imageURL : 'http://www.contentecontent.com/stuff/monument.jpg'
 				  });
 		pins.push({
-				  lat: 52.37277190755, lon: 4.894415905414, title: 'hotel', subTitle:'subTitle here too', pinColor: 'green', index: 2, selected: false
+				  lat: 52.37277190755, lon: 4.894415905414, title: 'hotel', subTitle:'subtitle here too', pinColor: 'green', index: 2, selected: false
 				  });
 		pins.push({
-				  lat: 52.37320562232438, lon: 4.891400459990564, title: 'palace', subTitle:'subTitle', pinColor: 'purple', index: 3, selected: true
+				  lat: 52.37320562232438, lon: 4.891400459990564, title: 'palace', subTitle:'subtitle', pinColor: 'purple', index: 3, selected: true
 				  });
 		
 		var options = {buttonCallback: "app.mapCallBack", diameter:500, lat:52.37311669773997, lon: 4.892585647313581};
@@ -69,30 +69,29 @@ var app = {
 	// 'private' method. ugly layout because of all the callbacks
 	showMapAndPins : function(options, pins) {
 		window.plugins.mapKit.clearMapPins(
-										   function() {
-										   window.plugins.mapKit.showMap(
-																		 function() {
-																		 window.plugins.mapKit.setMapData(
-																										  options,
-																										  function() {
-																										  window.plugins.mapKit.addMapPins(
-																																		   pins,
-																																		   function() {
-		   },
-																																		   function() {errorHandler();}
-																																		   );
-																										  },
-																										  function() {errorHandler();})
-																		 },
-																		 function() {errorHandler();}
-																		 );},
-										   function() {errorHandler();}
-										   );
-		
+			function() {
+				window.plugins.mapKit.showMap(
+					function() {
+						window.plugins.mapKit.setMapData(
+							options,
+							function() {
+								window.plugins.mapKit.addMapPins(
+									pins,
+									function() {  },
+									errorHandler
+								);
+							},
+							errorHandler
+						)
+					},
+					errorHandler
+				);
+			},
+			errorHandler
+		);
 	}
-	
 };
 
-function errorHandler() {
-	console.warn('Oops..');
+function errorHandler(err) {
+	console.warn('Oops.. ' + err.message);
 }
