@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.contentecontent.cordova.plugins.mapKit"
+        version="1.0.0">
+
+    <name>MapKit</name>
+
+    <description>MapKit plugin for iOS. Cordova 3.x.x</description>
+    <keywords>maps, ios</keywords>
+    <license>MIT License</license>
+
+    <author>Ronald Klip (github.com/RonaldPK)</author>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <!-- ios -->
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+		<feature name="MapKitView">
+			<param name="ios-package" value="MapKitView"/>
+		</feature>
+        </config-file>
+
+        <js-module src="www/MapKit.js" name="MapKit">
+            <clobbers target="plugins.mapKit" />
+        </js-module>
+
+		<header-file src="src/ios/AsyncImageView.h" />
+		<header-file src="src/ios/CDVAnnotation.h" />
+		<header-file src="src/ios/MapKit.h" />
+		<source-file src="src/ios/AsyncImageView.m" />
+		<source-file src="src/ios/CDVAnnotation.m" />
+		<source-file src="src/ios/MapKit.m" />
+		
+		<framework src="MapKit.framework" />
+		
+		<asset src="www/map-close-button.png" target="map-close-button.png" />
+
+    </platform>
+
+</plugin>
