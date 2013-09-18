@@ -31,7 +31,7 @@ var cordovaRef = window.PhoneGap || window.Cordova || window.cordova; // old to 
 			cordovaRef.exec(success, error, 'MapKitView', 'showMap', []);
 		},
 
-		setMapData: function(options) {
+		setMapData: function(options, success, error) {
 			/*
 			buttonCallback: String, string callback function
 			height: Number, - pixels
