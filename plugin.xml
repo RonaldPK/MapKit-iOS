@@ -20,9 +20,9 @@
     <platform name="ios">
 
         <config-file target="config.xml" parent="/*">
-		<feature name="MapKitView">
-			<param name="ios-package" value="MapKitView"/>
-		</feature>
+			<feature name="MapKitView">
+				<param name="ios-package" value="MapKitView"/>
+			</feature>
         </config-file>
 
         <js-module src="www/MapKit.js" name="MapKit">
