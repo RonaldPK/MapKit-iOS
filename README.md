@@ -1,5 +1,7 @@
 # PhoneGap/Cordova iOS MapKit Plugin #
 
+This plugin enables you to use iOS' native MapKit framework. It is based on the original MapKit plugin (https://github.com/phonegap/phonegap-plugins/tree/master/iOS/MapKit).
+
 ## Requirements ##
 
 The plugin works with PhoneGap (Cordova) versions 2.8, 2.9 and 3.0.
