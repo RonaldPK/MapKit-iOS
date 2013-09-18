@@ -106,7 +106,6 @@
 		annotation.selected = selected;
 		
 		[self.mapView addAnnotation:annotation];
-		[annotation release];
         [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 	}
 }
@@ -226,14 +225,13 @@
 	else
 		annView.pinColor = MKPinAnnotationColorRed;
 
-	AsyncImageView* asyncImage = [[[AsyncImageView alloc] initWithFrame:CGRectMake(0,0, 50, 32)] autorelease];
+	AsyncImageView* asyncImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0,0, 50, 32)];
 	asyncImage.tag = 999;
 	if (phAnnotation.imageURL)
 	{
 		NSURL *url = [[NSURL alloc] initWithString:phAnnotation.imageURL];
 		[asyncImage loadImageFromURL:url];
-		[ url release ];
-	} 
+	}
 	else 
 	{
 		[asyncImage loadDefaultImage];
@@ -295,7 +293,6 @@
         self.childView = nil;
 	}
     self.buttonCallback = nil;
-    [super dealloc];
 }
 
 @end
